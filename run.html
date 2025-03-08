@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Runner - DevHub</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="bg-dark-light fixed w-full top-0 z-50">
+        <div class="container mx-auto flex md:justify-between justify-center items-center">
+            <div class="text-2xl font-bold text-primary">DevHub</div>
+        </div>
+    </nav>
+
+    <main class="container m-32">
+        <h1>Live Code Runner</h1>
+        <p class="description">Write and test your code in real-time</p>
+
+            <!-- Web Section -->
+            <div id="webSection" class="language-section">
+                <div class="editor-tabs">
+                    <button class="tab-btn active" data-lang="html">HTML</button>
+                    <button class="tab-btn" data-lang="css">CSS</button>
+                    <button class="tab-btn" data-lang="js">JavaScript</button>
+                </div>
+                <div class="editors">
+                    <textarea id="htmlEditor" placeholder="Enter HTML code here"></textarea>
+                    <textarea id="cssEditor" class="hidden" placeholder="Enter CSS code here"></textarea>
+                    <textarea id="jsEditor" class="hidden" placeholder="Enter JavaScript code here"></textarea>
+                </div>
+            </div>
+
+            
+
+            <div class="editor-actions">
+                <button id="runCode" class="cta-button">
+                    <i class="fas fa-play"></i> Run Code
+                </button>
+                <button id="clearCode" class="filter-btn">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+            </div>
+            <div class="preview-container">
+                <div class="output-header">
+                    <h3>Output:</h3>
+                    <div class="output-controls">
+                        <button id="clearOutput" class="filter-btn">Clear Output</button>
+                    </div>
+                </div>
+                <div id="outputBox" class="output-box"></div>
+                <iframe id="previewFrame" class="preview hidden"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 DevHub. Made with <i class="fas fa-heart"></i> for developers</p>
+    </footer>
+    <script src="run.js"></script>
+</body>
+</html>

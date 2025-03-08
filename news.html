@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech News - DevHub</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="bg-dark-light fixed w-full top-0 z-50">
+        <div class="container mx-auto flex md:justify-between justify-center items-center">
+            <div class="text-2xl font-bold text-primary">DevHub</div>
+        </div>
+    </nav>
+
+    <main class="container m-32">
+        <h1>Latest Tech News</h1>
+        <p class="description">Stay updated with the latest in tech</p>
+        
+        <div class="news-filters">
+            <button class="filter-btn active" data-category="technology">Technology</button>
+            <button class="filter-btn" data-category="ai">AI</button>
+            <button class="filter-btn" data-category="web">Web Dev</button>
+        </div>
+
+        <div class="news-grid" id="newsGrid"></div>
+        
+        <div class="loading-spinner" id="loadingSpinner">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+    </main>
+
+    <footer class="footer">
+        // ...existing footer code...
+    </footer>
+    <script src="news.js"></script>
+</body>
+</html>

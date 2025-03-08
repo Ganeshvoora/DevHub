@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        dark: '#121212',
+                        'dark-light': '#1a1a1a'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark text-white">
+    <nav class="navbar">
+        <div class="container mx-auto flex md:justify-between justify-center items-center">
+            <div class="logo">
+                <i class="fas fa-code"></i> DevHub
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="chat.html"><i class="fas fa-robot"></i> AI Chat</a></li>
+                <li><a href="explain.html"><i class="fas fa-code"></i> Code Tools</a></li>
+                <li><a href="news.html"><i class="fas fa-newspaper"></i> Tech News</a></li>
+                <li><a href="todos.html"><i class="fas fa-tasks"></i> Todos</a></li>
+                <li><a href="#tools"><i class="fas fa-tools"></i> Dev Tools</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-16 p-4">
+        <div class="hero flex flex-col md:flex-row items-center justify-between py-12"></section>
+            <div class="hero-content text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-primary animate-fade-in">Developer Hub</h1>
+                <p class="tagline text-xl mb-4">Your All-in-One Developer Toolkit</p>
+                <p class="description mb-8">Access powerful development tools, AI assistance, and resources - all in one place.</p>
+                <button class="cta-button bg-primary text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Get Started <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="hero-image mt-8 md:mt-8">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500" alt="Coding Interface" class="rounded-lg shadow-lg animate-slide-up">
+            </div>
+        </div>
+        
+
+        
+
+        <section class="tools-section my-16" id="tools">
+            <h2 class="text-3xl font-bold mb-8">Developer Tools</h2>
+            <div class="tools-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="tool-card bg-dark-light p-4 rounded-lg text-center" onclick="window.location.href='chat.html'">
+                    <i class="fas fa-robot text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">AI Chat</h3>
+                    <p class="mb-4">Get instant coding help</p>
+                    <span class="badge bg-primary text-white py-1 px-2 rounded">Powered by Gemini</span>
+                </div>
+                <div class="tool-card bg-dark-light p-4 rounded-lg text-center" onclick="window.location.href='explain.html'">
+                    <i class="fas fa-code text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Code Explainer</h3>
+                    <p class="mb-4">Understand complex code snippets instantly</p>
+                    <span class="badge bg-primary text-white py-1 px-2 rounded">AI-Powered</span>
+                </div>
+                <div class="tool-card bg-dark-light p-4 rounded-lg text-center" onclick="window.location.href='news.html'">
+                    <i class="fas fa-newspaper text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Tech News</h3>
+                    <p class="mb-4">Stay updated with latest tech trends</p>
+                    <span class="badge bg-primary text-white py-1 px-2 rounded">Real-time</span>
+                </div>
+                <div class="tool-card bg-dark-light p-4 rounded-lg text-center" onclick="window.location.href='run.html'">
+                    <i class="fas fa-play text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Code Runner</h3>
+                    <p class="mb-4">Run code in browser</p>
+                    <span class="badge bg-primary text-white py-1 px-2 rounded">Multi-language</span>
+                </div>
+                
+                <div class="tool-card bg-dark-light p-4 rounded-lg text-center" onclick="window.location.href='#contact'">
+                    <i class="fas fa-envelope text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Contact Us</h3>
+                    <p class="mb-4">Get in touch with us</p>
+                    <span class="badge bg-primary text-white py-1 px-2 rounded">24/7 Support</span>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section class="why-us my-16">
+            <h2 class="text-3xl font-bold mb-8">Why Choose DevHub?</h2>
+            <div class="benefits-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="benefit-card bg-dark-light p-8 rounded-lg text-center">
+                    <i class="fas fa-bolt text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Lightning Fast</h4>
+                    <p>All tools work in real-time</p>
+                </div>
+                <div class="benefit-card bg-dark-light p-8 rounded-lg text-center">
+                    <i class="fas fa-shield-alt text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Secure</h4>
+                    <p>Your code stays private</p>
+                </div>
+                <div class="benefit-card bg-dark-light p-8 rounded-lg text-center">
+                    <i class="fas fa-code-branch text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Open Source</h4>
+                    <p>Community driven development</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section my-16" id="contact">
+            <h2 class="text-3xl font-bold mb-8">Get In Touch</h2>
+            <div class="contact-container bg-dark-light p-8 rounded-lg">
+                <form id="contactForm" class="contact-form flex flex-col gap-4">
+                    <input type="text" class="p-2 rounded-lg" placeholder="Your Name" required>
+                    <input type="email" class="p-2 rounded-lg" placeholder="Your Email" required>
+                    <textarea class="p-2 rounded-lg" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="submit-btn bg-primary text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer bg-dark-light p-4 text-center">
+        <p>&copy; 2023 DevHub. Made with <i class="fas fa-heart text-primary"></i> for developers</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Explainer - DevHub</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="bg-dark-light fixed w-full top-0 z-50">
+        <div class="container mx-auto flex md:justify-between justify-center items-center">
+            <div class="text-2xl font-bold text-primary">DevHub</div>
+        </div>
+    </nav>
+
+    <main class="container mt-32">
+        <h1>Code Explainer</h1>
+        <p class="description">Understand any code snippet with AI assistance</p>
+        
+        <div class="code-explainer">
+            <div class="code-input">
+                <textarea id="codeInput" placeholder="Paste your code here..."></textarea>
+                <select id="languageSelect">
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="cpp">C++</option>
+                </select>
+                <button id="explainBtn">Explain Code</button>
+            </div>
+            <div class="explanation-box" id="explanationBox"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        // ...existing footer code...
+    </footer>
+    <script src="explain.js"></script>
+</body>
+</html>
