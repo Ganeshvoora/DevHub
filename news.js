@@ -4,50 +4,55 @@ const loadingSpinner = document.getElementById('loadingSpinner');
 
 async function fetchNews(category = 'technology') {
     try {
-        loadingSpinner.style.display = 'block';
+        loadingSpinner.classList.remove('hidden');
         newsGrid.innerHTML = '';
 
-        // Convert category names to query parameters
-        let query = '';
-        switch(category.toLowerCase()) {
-            case 'ai':
-                query = 'artificial intelligence';
-                break;
-            case 'web dev':
-                query = 'web development';
-                break;
-            default:
-                query = 'technology';
-        }
+        const categoryQueries = {
+            'technology': 'technology',
+            'ai': 'artificial intelligence machine learning',
+            'web': 'web development javascript',
+            'programming': 'programming software development'
+        };
 
-        const url = `https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
+        const query = categoryQueries[category.toLowerCase()] || 'technology';
+        const url = `https://newsapi.org/v2/everything?q=${query}&sortBy=publishedAt&language=en&apiKey=${apiKey}`;
         const response = await fetch(url);
         const data = await response.json();
 
-        if (data.status === 'ok') {
-            displayNews(data.articles);
+        if (data.status === 'ok' && data.articles) {
+            displayNews(data.articles.slice(0, 12)); // Display first 12 articles
         } else {
             throw new Error('Failed to fetch news');
         }
     } catch (error) {
         console.error("Error fetching news:", error);
-        newsGrid.innerHTML = '<p class="error">Failed to load news. Please try again later.</p>';
+        newsGrid.innerHTML = `
+            <div class="col-span-full text-center text-red-500">
+                <p>Failed to load news. Please try again later.</p>
+            </div>`;
     } finally {
-        loadingSpinner.style.display = 'none';
+        loadingSpinner.classList.add('hidden');
     }
 }
 
 function displayNews(articles) {
     articles.forEach(article => {
+        if (!article.title || !article.url) return;
+
         const newsCard = `
-            <div class="news-card">
-                <img src="${article.urlToImage || 'https://picsum.photos/300/200'}" alt="${article.title}">
-                <div class="news-content">
-                    <h3>${article.title}</h3>
-                    <p>${article.description || ''}</p>
-                    <div class="news-meta">
-                        <span class="source">${article.source.name}</span>
-                        <a href="${article.url}" target="_blank" class="read-more">Read More</a>
+            <div class="news-card bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-transform hover:-translate-y-1">
+                <img src="${article.urlToImage || 'https://via.placeholder.com/300x200'}" 
+                     alt="${article.title}"
+                     class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold mb-2">${article.title}</h3>
+                    <p class="text-gray-400 mb-4 line-clamp-2">${article.description || ''}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-primary">${article.source.name}</span>
+                        <a href="${article.url}" target="_blank" 
+                           class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                           Read More
+                        </a>
                     </div>
                 </div>
             </div>
@@ -64,9 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelector('.filter-btn.active').classList.remove('active');
-            e.target.classList.add('active');
-            const category = e.target.textContent; // Use button text instead of dataset
-            fetchNews(category);
+            btn.classList.add('active');
+            fetchNews(btn.dataset.category);
         });
     });
 });
