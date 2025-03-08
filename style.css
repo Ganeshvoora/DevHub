@@ -342,7 +342,6 @@ h2 {
     line-height: 1.5;
 }
 
-
 /* Contact Section */
 .contact-container {
     max-width: 600px;
@@ -893,4 +892,45 @@ select:disabled {
 #input:focus {
     outline: 2px solid #3b82f6;
     outline-offset: 2px;
+}
+
+.explanation {
+    background: #1a1a1a;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.explanation h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #3B82F6;
+}
+
+.explanation pre {
+    background: #2d2d2d;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.explanation code {
+    color: #3B82F6;
+}
+
+.explanation h4 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #3B82F6;
+}
+
+.explanation ul, .explanation ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.explanation li {
+    margin-bottom: 0.5rem;
 }
