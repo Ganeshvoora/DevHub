@@ -4,37 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech News - DevHub</title>
-    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <nav class="bg-dark-light fixed w-full top-0 z-50">
-        <div class="container mx-auto flex md:justify-between justify-center items-center">
-            <div class="text-2xl font-bold text-primary">DevHub</div>
+<body class="bg-dark text-white">
+    <nav class="navbar">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="logo">
+                <a href="index.html"><i class="fas fa-code"></i> DevHub</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="chat.html"><i class="fas fa-robot"></i> AI Chat</a></li>
+                <li><a href="explain.html"><i class="fas fa-code"></i> Code Tools</a></li>
+                <li><a href="news.html" class="active"><i class="fas fa-newspaper"></i> Tech News</a></li>
+                <li><a href="todos.html"><i class="fas fa-tasks"></i> Todos</a></li>
+            </ul>
         </div>
     </nav>
 
-    <main class="container m-32">
-        <h1>Latest Tech News</h1>
-        <p class="description">Stay updated with the latest in tech</p>
-        
-        <div class="news-filters">
-            <button class="filter-btn active" data-category="technology">Technology</button>
-            <button class="filter-btn" data-category="ai">AI</button>
-            <button class="filter-btn" data-category="web">Web Dev</button>
-        </div>
+    <main class="container mx-auto mt-16 p-4">
+        <div class="news-container bg-dark-light p-8 rounded-lg">
+            <h1 class="text-3xl font-bold mb-4">Latest Tech News</h1>
+            <p class="description mb-6">Stay updated with the latest in tech</p>
+            
+            <div class="filters mb-8 flex gap-4">
+                <button class="filter-btn active" data-category="technology">All Tech</button>
+                <button class="filter-btn" data-category="ai">AI & ML</button>
+                <button class="filter-btn" data-category="web">Web Dev</button>
+                <button class="filter-btn" data-category="programming">Programming</button>
+            </div>
 
-        <div class="news-grid" id="newsGrid"></div>
-        
-        <div class="loading-spinner" id="loadingSpinner">
-            <i class="fas fa-spinner fa-spin"></i>
+            <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            
+            <div id="loadingSpinner" class="loading-state text-center py-8 hidden">
+                <i class="fas fa-spinner fa-spin text-3xl text-primary"></i>
+            </div>
         </div>
     </main>
-
-    <footer class="footer">
-        // ...existing footer code...
-    </footer>
     <script src="news.js"></script>
 </body>
 </html>
