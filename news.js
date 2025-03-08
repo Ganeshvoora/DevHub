@@ -1,76 +1,77 @@
-const apiKey = "99fe1e189e484b5eac60d4b700048d71";
-const newsGrid = document.getElementById('newsGrid');
-const loadingSpinner = document.getElementById('loadingSpinner');
+async function fetchNews(topic) {
+    let searchTerm = topic || document.getElementById('searchInput').value.trim();
+    if (!searchTerm) {
+        searchTerm = 'Technology'; // Default topic
+    }
 
-async function fetchNews(category = 'technology') {
+    const loading = document.getElementById('loading');
+    const newsContainer = document.getElementById('news-container');
+    
+    loading.classList.remove('hidden');
+    newsContainer.innerHTML = '';
+
     try {
-        loadingSpinner.classList.remove('hidden');
-        newsGrid.innerHTML = '';
+        const url = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
+            `https://news.google.com/rss/search?q=${searchTerm}&hl=en-IN&gl=IN&ceid=IN:en`
+        )}`;
 
-        const categoryQueries = {
-            'technology': 'technology',
-            'ai': 'artificial intelligence machine learning',
-            'web': 'web development javascript',
-            'programming': 'programming software development'
-        };
-
-        const query = categoryQueries[category.toLowerCase()] || 'technology';
-        const url = `https://newsapi.org/v2/everything?q=${query}&sortBy=publishedAt&language=en&apiKey=${apiKey}`;
         const response = await fetch(url);
         const data = await response.json();
 
-        if (data.status === 'ok' && data.articles) {
-            displayNews(data.articles.slice(0, 12)); // Display first 12 articles
-        } else {
-            throw new Error('Failed to fetch news');
+        if (!data.items || data.items.length === 0) {
+            newsContainer.innerHTML = "<p class='text-center'>No news found.</p>";
+            return;
         }
+
+        data.items.slice(0, 9).forEach(article => {
+            const newsCard = `
+                <div class="news-item">
+                    <h3>${article.title}</h3>
+                    <p>${article.description || 'No description available.'}</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <a href="${article.link}" target="_blank" class="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
+                            Read More
+                        </a>
+                        <div class="flex gap-2">
+                            <button onclick="shareNews('${article.link}')" class="p-2 bg-gray-700 rounded-full hover:bg-gray-600">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+            `;
+            newsContainer.innerHTML += newsCard;
+        });
     } catch (error) {
         console.error("Error fetching news:", error);
-        newsGrid.innerHTML = `
-            <div class="col-span-full text-center text-red-500">
-                <p>Failed to load news. Please try again later.</p>
-            </div>`;
+        newsContainer.innerHTML = "<p class='text-center text-red-500'>Failed to load news. Please try again later.</p>";
     } finally {
-        loadingSpinner.classList.add('hidden');
+        loading.classList.add('hidden');
     }
 }
 
-function displayNews(articles) {
-    articles.forEach(article => {
-        if (!article.title || !article.url) return;
-
-        const newsCard = `
-            <div class="news-card bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-transform hover:-translate-y-1">
-                <img src="${article.urlToImage || 'https://via.placeholder.com/300x200'}" 
-                     alt="${article.title}"
-                     class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold mb-2">${article.title}</h3>
-                    <p class="text-gray-400 mb-4 line-clamp-2">${article.description || ''}</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm text-primary">${article.source.name}</span>
-                        <a href="${article.url}" target="_blank" 
-                           class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                           Read More
-                        </a>
-                    </div>
-                </div>
-            </div>
-        `;
-        newsGrid.innerHTML += newsCard;
-    });
+function shareNews(url) {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Check out this news!',
+            url: url
+        });
+    } else {
+        navigator.clipboard.writeText(url);
+        alert('Link copied to clipboard!');
+    }
 }
 
-// Initialize news page
-document.addEventListener('DOMContentLoaded', () => {
-    fetchNews();
 
-    // Filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            document.querySelector('.filter-btn.active').classList.remove('active');
-            btn.classList.add('active');
-            fetchNews(btn.dataset.category);
-        });
-    });
+// Load news on page load
+document.addEventListener('DOMContentLoaded', () => {
+    fetchNews('Technology');
+});
+
+// Add search on Enter key
+document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        fetchNews();
+    }
 });
