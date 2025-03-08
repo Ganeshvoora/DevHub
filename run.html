@@ -9,12 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="bg-dark-light fixed w-full top-0 z-50">
         <div class="container mx-auto flex justify-center items-center">
-            <div class="logo">
-                <a href="index.html"><i class="fas fa-code"></i> DevHub</a>
-            </div>
-            
+            <div class="text-2xl font-bold text-primary">DevHub</div>
         </div>
     </nav>
 
@@ -22,40 +19,35 @@
         <h1>Live Code Runner</h1>
         <p class="description">Write and test your code in real-time</p>
 
-            <!-- Web Section -->
-            <div id="webSection" class="language-section">
-                <div class="editor-tabs">
-                    <button class="tab-btn active" data-lang="html">HTML</button>
-                    <button class="tab-btn" data-lang="css">CSS</button>
-                    <button class="tab-btn" data-lang="js">JavaScript</button>
-                </div>
-                <div class="editors">
-                    <textarea id="htmlEditor" placeholder="Enter HTML code here"></textarea>
-                    <textarea id="cssEditor" class="hidden" placeholder="Enter CSS code here"></textarea>
-                    <textarea id="jsEditor" class="hidden" placeholder="Enter JavaScript code here"></textarea>
-                </div>
+        <div id="webSection" class="language-section">
+            <div class="editor-tabs">
+                <button class="tab-btn active" data-lang="html">HTML</button>
+                <button class="tab-btn" data-lang="css">CSS</button>
+                <button class="tab-btn" data-lang="js">JavaScript</button>
             </div>
+            <div class="editors">
+                <textarea id="htmlEditor" placeholder="Enter HTML code here"></textarea>
+                <textarea id="cssEditor" class="hidden" placeholder="Enter CSS code here"></textarea>
+                <textarea id="jsEditor" class="hidden" placeholder="Enter JavaScript code here"></textarea>
+            </div>
+        </div>
 
-            
-
-            <div class="editor-actions">
-                <button id="runCode" class="cta-button">
-                    <i class="fas fa-play"></i> Run Code
-                </button>
-                <button id="clearCode" class="filter-btn">
-                    <i class="fas fa-trash"></i> Clear
-                </button>
-            </div>
-            <div class="preview-container">
-                <div class="output-header">
-                    <h3>Output:</h3>
-                    <div class="output-controls">
-                        <button id="clearOutput" class="filter-btn">Clear Output</button>
-                    </div>
+        <div class="editor-actions">
+            <button id="runCode" class="cta-button">
+                <i class="fas fa-play"></i> Run Code
+            </button>
+            <button id="clearCode" class="filter-btn">
+                <i class="fas fa-trash"></i> Clear
+            </button>
+        </div>
+        <div class="preview-container">
+            <div class="output-header">
+                <h3>Output:</h3>
+                <div class="output-controls">
+                    <button id="clearOutput" class="filter-btn">Clear Output</button>
                 </div>
-                <div id="outputBox" class="output-box"></div>
-                <iframe id="previewFrame" class="preview hidden"></iframe>
             </div>
+            <iframe id="previewFrame" class="preview"></iframe>
         </div>
     </main>
 
