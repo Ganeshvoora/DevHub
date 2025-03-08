@@ -4,40 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Chat - DevHub</title>
-    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
-    <nav class="bg-dark-light fixed w-full top-0 z-50">
-        <div class="container mx-auto flex md:justify-between justify-center items-center">
-            <div class="text-2xl font-bold text-primary">DevHub</div>
+<body class="bg-dark text-white">
+    <nav class="navbar">
+        <div class="container mx-auto flex justify-center items-center">
+            <div class="logo">
+                <a href="index.html"><i class="fas fa-code"></i> DevHub</a>
+            </div>
+            
         </div>
     </nav>
 
-    <main class="container chat-container m-32">
-        <h1>AI Chat Assistant</h1>
-        <p class="description">Get instant coding help from our AI assistant</p>
-        <div class="chat-box" id="chatBox"></div>
-        <div class="chat-input">
-            <textarea id="userInput" placeholder="Ask me anything about coding..."></textarea>
-            <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+    <main class="container mx-auto mt-16 p-4">
+        <div class="chat-container bg-dark-light p-8 mx-auto rounded-lg">
+            <h1 class="text-3xl font-bold mb-4">AI Chat Assistant</h1>
+            <p class="description mb-6">Get instant coding help from our AI assistant</p>
+            <div class="chat-box bg-gray-800 p-4 rounded-lg mb-4" id="chatBox"></div>
+            <div class="chat-input flex gap-2">
+                <textarea id="userInput" class="flex-grow p-3 rounded-lg bg-gray-800 text-white" 
+                    placeholder="Ask me anything about coding..."></textarea>
+                <button id="sendBtn" class="bg-primary text-white px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <i class="fas fa-code"></i> DevHub
-            </div>
-            <div class="footer-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
-            </div>
-            <p class="copyright">&copy; 2025 DevHub. Made with <i class="fas fa-heart"></i> for developers</p>
-        </div>
+    <footer class="footer bg-dark-light p-4 text-center">
+        <p>&copy; 2025 DevHub. Made with <i class="fas fa-heart text-primary"></i> for developers</p>
     </footer>
     <script src="chat.js"></script>
 </body>
